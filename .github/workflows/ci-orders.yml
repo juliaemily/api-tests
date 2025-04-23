@@ -1,4 +1,4 @@
-name: Executando novo teste CI com Newman
+name: Novo teste CI com Newman
 
 on:
   push:
