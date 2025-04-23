@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "85ccc8e3-ee4c-4549-b53d-7e1507b07932",
+		"name": "teste ju 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "36032582",
+		"_collection_link": "https://blue-eclipse-6733.postman.co/workspace/6a330dba-4222-4cdd-937b-8bca934087a2/collection/36032582-85ccc8e3-ee4c-4549-b53d-7e1507b07932?action=share&source=collection_link&creator=36032582"
+	},
+	"item": [
+		{
+			"name": "retorna produtos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/products"
+			},
+			"response": []
+		},
+		{
+			"name": "retorna produto 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();",
+							"let produto = response.title",
+							"",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"",
+							"pm.test(\"Criação retornou ID\", function () {",
+							"    pm.expect(response).to.have.property(\"id\");",
+							"})",
+							"",
+							"pm.test(\"titulo do produto\", function (){",
+							"        pm.expect(produto).to.eql(\"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops\")",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Post de teste\",\n  \"body\": \"Este é um post criado via Postman\",\n  \"userId\": 1\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/products/1"
+			},
+			"response": []
+		},
+		{
+			"name": "inclui itens",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();",
+							"let usuario = response.userId",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Usuário\", function (){",
+							"        pm.expect(usuario).to.eql(5)",
+							"})",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": 5,\n  \"date\": \"2020-02-03\",\n  \"products\": [{ \"productId\": 1, \"quantity\": 3 }]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/carts"
+			},
+			"response": []
+		}
+	]
+}
