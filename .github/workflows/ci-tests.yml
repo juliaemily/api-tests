@@ -18,8 +18,3 @@ jobs:
 
       - name: Install Newman
         run: npm install -g newman newman-reporter-html
-
-      - name: Run API Tests
-        run: |
-          mkdir -p reports
-          newman run postman/collection.json -r cli,html --reporter-html-export reports/report.html

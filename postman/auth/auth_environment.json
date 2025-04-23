@@ -1,0 +1,15 @@
+{
+	"id": "23ae4515-38d3-48e9-9bac-ec2ac7e3d80b",
+	"name": "Github Actions",
+	"values": [
+		{
+			"key": "TOKEN",
+			"value": "",
+			"type": "secret",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2025-04-23T22:50:39.939Z",
+	"_postman_exported_using": "Postman/11.42.1"
+}
